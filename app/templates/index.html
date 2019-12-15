@@ -1,8 +1,28 @@
 {% extends "base.html" %}
-{% block title %}Home{% endblock %}
+
+{% block title %}URL Scraper{% endblock %}
 {% block body %}
+
 <div class="jumbotron">
-  <h1>Flask Is Awesome</h1>
-  <p class="lead">And I'm glad to be learning so much about it!</p>
+
+  <form method="POST" action="/">
+
+    <div class="form-group">
+      {{ form.url.label(class_="form-label") }} 
+      {{ form.url(class_="form-control") }}
+
+      {% if form.url.errors %}
+        <ul class="invalid-feedback">
+        	{% for error in form.url.errors %}
+        		<li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+      {% endif %}
+
+    </div>
+    {{ form.submit(class_="btn btn-primary") }}
+      
+  </form>
+
 </div>
 {% endblock %}

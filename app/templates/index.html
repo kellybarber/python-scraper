@@ -24,5 +24,15 @@
       
   </form>
 
+  <h2>Word Count</h2>
+  {% if word_count %}
+    <ul>
+      {% for word in word_count %}
+        <li>{{ word.title }}: {{ word.count }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  
+
 </div>
 {% endblock %}

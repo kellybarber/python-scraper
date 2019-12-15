@@ -1,15 +1,12 @@
 from app import app
-from flask import render_template, redirect, url_for
-
-import logging
-from logging.handlers import RotatingFileHandler
+from flask import render_template, request
 
 from app.forms import GetPageForm
+from app.controllers.get_page_controller import get_page_controller
 
 @app.route('/', methods=('GET', 'POST'))
 def get_page():
     form = GetPageForm()
-    
-    app.logger.info(form)
+    get_page_controller(form)
 
     return render_template('index.html', form=form)
